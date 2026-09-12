@@ -1,0 +1,13 @@
+[Unit]
+Description=My Server
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/nginx -g 'daemon on;'
+ExecReload=/usr/sbin/nginx -s reload
+ExecStop=/usr/sbin/nginx -s stop
+PIDFile=/run/nginx.pid
+PrivateTMP=true
+
+[Install]
+WantedBy=multi-user.target
