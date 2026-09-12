@@ -1,0 +1,102 @@
+Script started on 2026-09-12 19:20:31+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="178" LINES="46"]
+                                                                                                                                                                                  ]0;max@max1: ~[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿max1[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hj[4mj[24m[4mj[24m[38;5;244mobs[39m[4mj[39m[4ma[24m[39m [39m [4mj[4ma[4mv[24m[4mv[4m [24m[4mv[24m[24m a [4mv[4mv[24m[4mv[4ma[24m[4mv[24m[24m [4mv[24m[24m [4mv[4ma[24m[24m[36mj[24m[36ma[24m[36mv[24m[36ma[39m[36ma[36m [39m[36ma[39m[39m -[32m-[39m[32m-[32mv[39m[32mv[32me[39m[32me[32mr[39m[39m-[39mv[39me[39mr
+Completing option
+[0m-verbose:class  -verbose  -- print class information                                                                                                                            
+-verbose:gc               -- print gc information                                                                                                                               
+-verbose:jni              -- print JNI information                                                                                                                              
+[J-version        [J          [J-- print version                                                                                                                                      [J[5A[0m[27m[24m[0m[39m[4C[36mjava[39m -ver[K[0m[39m[32m-[32mv[32me[32mr[39m[32mr[32ms[39m[32ms[32mion[39m[1m [0m[0m [?1l>[?2004l
+[Jopenjdk version "21.0.11-ea" 2026-04-21
+OpenJDK Runtime Environment (build 21.0.11-ea+5-1-Debian)
+OpenJDK 64-Bit Server VM (build 21.0.11-ea+5-1-Debian, mixed mode, sharing)
+                                                                                                                                                                                  ]0;max@max1: ~
+[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿max1[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hs[4ms[24m[4ms[24m[38;5;244msh-keygen -R 192.168.122.76[39m[27D[4ms[39m[4mu[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [26D[24m[36ms[24m[36mu[39m[38;5;244mdo zsh -c "echo 'MyCodeByLab' >> /etc/motd"[39m
+[K[A[6C[36ms[36mu[36md[39m[1B[K[A[7C[39m[4ms[39m[4mu[39m[4md[24m[4md[39m[4mo[24m[4m[32ms[4m[32mu[4m[32md[4m[32mo[24m[39m[4m[32mo[4m[32m [24m[39m[4m[32mo[24m[39m[24m[39m [39mu[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [1B[K[A[10C[4mu[24m[4mu[4mp[24m[4mp[4md[24m[4md[4ma[24m[4ma[4mt[24m[4mt[4me[24m[24mu[24mp[24md[24ma[24mt[24me[1BCompleting external command
+[0mupdate-alternatives         update-default-ispell       update-fonts-scale          update-java-alternatives    update-pciids               update-tl-stacked-conffile
+update-ca-certificates      update-default-wordlist     update-grub                 update-language             update-perl-sax-parsers     update-updmap             
+update-catalog              update-desktop-database     update-grub2                update-language-dat         update-rc.d                 update-xmlcatalog         
+update-command-not-found    update-dictcommon-aspell    update-gsfontmap            update-language-def         update_rubygems                                       
+update-cracklib             update-dictcommon-hunspell  update-icon-caches          update-language-lua         update-shells                                         
+updatedb                    update-fmtutil              update-ieee-data            update-locale               update-smart-drivedb                                  
+updatedb.plocate            update-fonts-alias          update-inetd                update-mime-database        update-texmf                                          
+[Jupdate-default-aspell       [Jupdate-fonts-dir            [Jupdate-initramfs            [Jupdate-passwd               [Jupdate-texmf-config         [J                          [9A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m update[K[0m[39m[4mu[4mp[4md[4ma[4mt[4me[24m[4me[4m-[24m[24mu[24mp[24md[24ma[24mt[24me[24m-
+[JCompleting external command
+[0mupdate-alternatives         update-default-wordlist     update-fonts-scale          update-initramfs            update-mime-database        update-texmf              
+update-ca-certificates      update-desktop-database     update-grub                 update-java-alternatives    update-passwd               update-texmf-config       
+update-catalog              update-dictcommon-aspell    update-grub2                update-language             update-pciids               update-tl-stacked-conffile
+update-command-not-found    update-dictcommon-hunspell  update-gsfontmap            update-language-dat         update-perl-sax-parsers     update-updmap             
+update-cracklib             update-fmtutil              update-icon-caches          update-language-def         update-rc.d                 update-xmlcatalog         
+update-default-aspell       update-fonts-alias          update-ieee-data            update-language-lua         update-shells                                         
+[Jupdate-default-ispell       [Jupdate-fonts-dir            [Jupdate-inetd                [Jupdate-locale               [Jupdate-smart-drivedb        [J                          [8A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m update-[K[0m[39m[4mu[4mp[4md[4ma[4mt[4me[4m-[24m[4m-[4ma[24m[4ma[4m;[24m[4ma[24m[24m[1m[34m;[0m[39m[1m[34m;[1m[34mt[0m[39m[1m[34m;[0m[39m[0m[39m[4mt[24m[1m[34m;[24m[1m[34mt[0m[39m
+[JCompleting external command
+[0mt1ascii                 tcpcapinfo              test                    theHarvester            tjbench                 traceroute              tsort                 
+t1asm                   tcpdump                 testdisk                thinkjettopbm           tkconch3                traceroute6             ttf2afm               
+t1binary                tcpick                  testparm                thumbpdf                tkiptun-ng              traceroute6.db          ttf2pk                
+t1disasm                tcpkill                 tex                     thunar                  tkjpeg                  traceroute.db           ttf2tfm               
+t1mac                   tcpliveplay             tex2aspc                Thunar                  tknewsbiff              traceroute-nanog        ttfdump               
+t1unmac                 tcpnice                 tex4ht                  thunar-settings         tkpasswd                trafgen                 tty                   
+t4ht                    tcpprep                 texdoc                  thunar-volman           tlmgr                   transform               tune2fs               
+tabs                    tcpreplay               texdoctk                thunar-volman-settings  tload                   transset                tune.exfat            
+tabulate                tcpreplay-edit          texhash                 tic                     tl-paper                tree                    twill                 
+tac                     tcprewrite              texlua                  tie                     tmux                    trial3                  twill-refsort         
+tail                    tcptraceroute           texluac                 tifftopnm               tnftp                   troff                   twist3                
+tangle                  tcptraceroute.db        texprof                 tigerdeep               toe                     true                    twistd3               
+tapestat                tdbbackup               texprofile              tightvncconnect         top                     truecrypt2john          twopi                 
+tar                     tdbbackup.tdbtools      text2pcap               tightvncpasswd          touch                   truncate                typeprof3.3           
+tarcat                  tdbdump                 textestvis              tightvncserver          tpic2pdftex             trust                   typog-grep            
+tasksel                 tdbrestore              tezos2john              tikztosvg               tpmc                    tset                    tzselect              
+taskset                 tdbtool                 tftopl                  time-admin              tpm-nvsize              tshark                                        
+tbl                     tee                     tftp                    timedatectl             tput                    tsk_comparedir                                
+tc                      telegram2john           tgatoppm                timed-read              tqdm                    tsk_gettimes                                  
+tclsh                   telnet                  tgtsnarf                timed-run               tr                      tsk_imageinfo                                 
+tclsh8.6                tempfile                thc-pptp-bruter         timeout                 traceproto              tsk_loaddb                                    
+tcpbridge               teredo-mire             theharvester            tipc                    traceproto.db           tsk_recover                                   
+Completing builtin command
+[0mtest                    times                   trap                    true                    ttyctl                  type                    typeset               
+Completing shell function
+[0mtoggle_oneline_prompt                                   TRAPINT                                                 TRAPQUIT                                              
+Completing reserved word
+[0mthen                                                    time                                                    typeset                                               
+Completing parameter
+[J[0mTERM                 [Jtermcap              [JTERM_TITLE           [JTIMEFMT              [JTMPPREFIX            [JTRY_BLOCK_ERROR      [JTRY_BLOCK_INTERRUPT  [JTTY                [J[31A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [4mupdate-a[24m[1m[34m;t[0m[39m[K[0m[39m[1m[34m;[0m[39m[0m[39m[4mt[24m[24m [0m[39m [4ma[4ml[24m[4ml[4mt[24m[10D[24m[36mu[24m[36mp[24m[36md[24m[36ma[24m[36mt[24m[36me[24m[36m-[24m[36ma[24m[36ml[24m[36mt[36mernatives[39m[1m [0m[1m [1m-[0m[0m [0m[32m-[39m[32m-[32m-[39m[39m-[39m-
+[JCompleting option
+[0m--admindir                                                  -- specify: admindir                                                                                                
+--altdir                                                    -- specify: altdir                                                                                                  
+--install     --remove                                      -- specify: alt                                                                                                     
+--log                                                       -- specify: log file                                                                                                
+--remove-all  --display  --config  --query  --list  --auto  -- specify: name                                                                                                    
+[0m--all              --get-selections   --quiet            --set-selections   --test             --version                                                             
+[J--force            [J--help             [J--set              [J--skip-auto        [J--verbose          [J                                                                    [8A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [36mupdate-alternatives[39m --[K[0m[39m[32m-[32m-[39m[32m-[32mc[39m[32mc[32mo[39m[32mo[32mn[39m[32mn[32mfig[39m[1m [0m[1m [1mj[0m[0m [1C[1mj[1ma[0m[0mj[0ma
+[JCompleting name
+[J[0mjaotc      [Jjar        [Jjarsigner  [Jjava       [Jjavac      [Jjavadoc    [Jjavap    [J[A[A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [36mupdate-alternatives[39m [32m--config[39m ja[K[0m[39m[1mj[1ma[0m[0mj[0maotc
+Completing name[K[K
+[J[7mjaotc    [0m  [Jjar        [Jjarsigner  [Jjava       [Jjavac      [Jjavadoc    [Jjavap    [J[A[A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [36mupdate-alternatives[39m [32m--config[39m jaotc[K[0m[39m
+[1B[7mjaotc    [0m  [7mjaotc    [0m  [A[A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [36mupdate-alternatives[39m [32m--config[39m jaotc[K[0m[39mr  
+[1B[11C[7mjar      [0m  jaotc      [A[A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [36mupdate-alternatives[39m [32m--config[39m jar[K[0m[39msigner
+[1B[22C[7mjarsigner[0m  [11Cjar        [A[A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [36mupdate-alternatives[39m [32m--config[39m jarsigner[K[0m[39m[9D[1mj[1ma[1mv[1ma[0m     
+[1B[33C[7mjava     [0m  [22Cjarsigner  [A[A[0m[27m[24m[0m[39m[4C[4m[32msudo[24m[39m [36mupdate-alternatives[39m [32m--config[39m [1mjava[0m[K[0m[39m
+[J[A[42C[0mj[0ma[0mv[0ma[1m [0m[0m [1mj[1ma[1mv[1ma[0m[?1l>[?2004l[0mj[0ma[0mv[0ma
+[J[sudo] пароль для max: 
+Есть 3 варианта для альтернативы java (предоставляет /usr/bin/java).
+
+  Выбор   Путь                                     Приор Состояние
+------------------------------------------------------------
+* 0            /usr/lib/jvm/java-21-openjdk-amd64/bin/java   2111      автоматический режим
+  1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java   1111      ручной режим
+  2            /usr/lib/jvm/java-21-openjdk-amd64/bin/java   2111      ручной режим
+  3            /usr/lib/jvm/jdk-26.0.2.1/bin/java            2000      ручной режим
+
+Нажмите «enter», чтобы не менять текущий выбор[*], или введите нужное число: 3
+update-alternatives: используется /usr/lib/jvm/jdk-26.0.2.1/bin/java для предоставления /usr/bin/java (java) в ручном режиме
+                                                                                                                                                                                  ]0;max@max1: ~
+[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿max1[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hj[4mj[24m[4mj[24m[38;5;244mava -version[39m[12D[4mj[39m[4ma[24m[4mj[4ma[39m[4mv[24m[4mv[39m[4ma[24m[24m[36mj[24m[36ma[24m[36mv[24m[36ma[39m[39m [39m-[39mv[39me[39mr[39ms[39mi[39mo[39mn[8D[32m-[32mv[32me[32mr[32ms[32mi[32mo[32mn[39m[?1l>[?2004l
+java version "26.0.2.1" 2026-08-18
+Java(TM) SE Runtime Environment (build 26.0.2.1+1-7)
+Java HotSpot(TM) 64-Bit Server VM (build 26.0.2.1+1-7, mixed mode, sharing)
+                                                                                                                                                                                  ]0;max@max1: ~
+[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿max1[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004he[4me[24m[4me[24m[38;5;244mxit[39m[4me[39m[4mx[24m[24m[36me[24m[36mx[39m[39mi[39mt[36me[36mx[36mi[36mt[39m[?1l>[?2004l
+
+Script done on 2026-09-12 19:21:57+02:00 [COMMAND_EXIT_CODE="0"]
