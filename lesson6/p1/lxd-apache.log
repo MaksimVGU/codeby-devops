@@ -1,0 +1,44 @@
+Script started on 2026-09-15 15:12:31+03:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="77" LINES="28"]
+                                                                             ]0;max@kali: ~[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿kali[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hlxc list[8D[36ml[36mx[36mc[39m[5C[?1l>[?2004l
++------+---------+--------------------+----------------------------------------------+-----------+-----------+
+| NAME |  STATE  |        IPV4        |                     IPV6                     |   TYPE    | SNAPSHOTS |
++------+---------+--------------------+----------------------------------------------+-----------+-----------+
+| web  | RUNNING | 10.85.65.46 (eth0) | fd42:21b1:3b54:83e2:216:3eff:fec8:28d (eth0) | CONTAINER | 0         |
++------+---------+--------------------+----------------------------------------------+-----------+-----------+
+                                                                             ]0;max@kali: ~
+[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿kali[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hlxc exec web -- systemctl status apache2 --no-pager[51D[36ml[36mx[36mc[39m[10C[32m-[32m-[39m[26C[32m-[32m-[32mn[32mo[32m-[32mp[32ma[32mg[32me[32mr[39m[?1l>[?2004l
+[0;1;32m●[0m apache2.service - The Apache HTTP Server
+     Loaded: loaded (]8;;file://web/usr/lib/systemd/system/apache2.service/usr/lib/systemd/system/apache2.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Tue 2026-09-15 12:04:37 UTC; 8min ago
+       Docs: ]8;;https://httpd.apache.org/docs/2.4/https://httpd.apache.org/docs/2.4/]8;;
+   Main PID: 1584 (apache2)
+      Tasks: 55 (limit: 4456)
+     Memory: 5.7M (peak: 6.3M)
+        CPU: 77ms
+     CGroup: /system.slice/apache2.service
+             ├─[0;38;5;245m1584 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1586 /usr/sbin/apache2 -k start[0m
+             └─[0;38;5;245m1588 /usr/sbin/apache2 -k start[0m
+
+Sep 15 12:04:37 web systemd[1]: Starting apache2.service - The Apache HT…r...
+Sep 15 12:04:37 web systemd[1]: Started apache2.service - The Apache HTT…ver.
+Hint: Some lines were ellipsized, use -l to show in full.
+                                                                             ]0;max@kali: ~
+[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿kali[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hlxc exec web -- curl -s http://localhost[40D[36ml[36mx[36mc[39m[10C[32m-[32m-[39m[6C[32m-[32ms[39m[17C[?1l>[?2004l
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Codeby — Lesson 6</title>
+</head>
+<body>
+    <h1>Codeby — Lesson 6</h1>
+    <h2>LXD + Apache</h2>
+                                                                             ]0;max@kali: ~
+[0m[27m[24m[J[32m┌──([1m[32m[34mmax㉿kali[0m[34m[32m)-[[1m[32m[39m~[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hexit[36me[36mx[36mi[36mt[39m[?1l>[?2004l
+
+Script done on 2026-09-15 15:13:09+03:00 [COMMAND_EXIT_CODE="0"]
