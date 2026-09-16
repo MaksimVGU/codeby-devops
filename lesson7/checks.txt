@@ -1,0 +1,32 @@
+Apache:
+HTTP/1.1 200 OK
+Date: Wed, 16 Sep 2026 12:54:22 GMT
+Server: Apache/2.4.68 (Debian)
+Last-Modified: Wed, 16 Sep 2026 09:32:21 GMT
+ETag: "bd-65b9658178950"
+Accept-Ranges: bytes
+Content-Length: 189
+Vary: Accept-Encoding
+Content-Type: text/html
+
+
+Nginx:
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 16 Sep 2026 12:54:22 GMT
+Content-Type: text/html
+Content-Length: 187
+Last-Modified: Wed, 16 Sep 2026 09:33:10 GMT
+Connection: keep-alive
+ETag: "6aaa6256-bb"
+Accept-Ranges: bytes
+
+
+Ports:
+tcp   LISTEN 0      511          0.0.0.0:8085      0.0.0.0:*    users:(("nginx",pid=48736,fd=5),("nginx",pid=48735,fd=5),("nginx",pid=48734,fd=5),("nginx",pid=48733,fd=5),("nginx",pid=48732,fd=5))                                                                
+tcp   LISTEN 0      511             [::]:8085         [::]:*    users:(("nginx",pid=48736,fd=6),("nginx",pid=48735,fd=6),("nginx",pid=48734,fd=6),("nginx",pid=48733,fd=6),("nginx",pid=48732,fd=6))                                                                
+tcp   LISTEN 0      511                *:8084            *:*    users:(("apache2",pid=51849,fd=4),("apache2",pid=47684,fd=4),("apache2",pid=47683,fd=4),("apache2",pid=47682,fd=4),("apache2",pid=47677,fd=4),("apache2",pid=47675,fd=4),("apache2",pid=47672,fd=4))
+
+Services:
+enabled
+enabled
