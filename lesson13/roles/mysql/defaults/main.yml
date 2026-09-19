@@ -1,0 +1,8 @@
+mysql_database_name: wordpress
+mysql_database_user: max
+mysql_database_password: '1'
+mysql_allowed_host: '%'
+mysql_bind_address: 0.0.0.0
+mysql_service_name: "{{ 'mysql' if ansible_facts.os_family == 'Debian' else 'mysqld' }}"
+mysql_socket: "{{ '/run/mysqld/mysqld.sock' if ansible_facts.os_family == 'Debian' else '/var/lib/mysql/mysql.sock' }}"
+mysql_config_file: "{{ '/etc/mysql/mysql.conf.d/wordpress.cnf' if ansible_facts.os_family == 'Debian' else '/etc/my.cnf.d/wordpress.cnf' }}"
