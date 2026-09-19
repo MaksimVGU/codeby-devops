@@ -1,0 +1,13 @@
+mysql_database_name: wordpress
+mysql_database_user: max
+mysql_database_password: '1'
+mysql_allowed_host: '%'
+mysql_bind_address: 0.0.0.0
+
+wordpress_db_host: 192.168.122.4
+wordpress_db_name: wordpress
+wordpress_db_user: max
+wordpress_db_password: '1'
+wordpress_install_dir: /var/www/wordpress
+wordpress_domain: 192.168.122.180
+wordpress_download_url: https://wordpress.org/latest.tar.gz

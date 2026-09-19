@@ -1,0 +1,11 @@
+- name: Install MySQL
+  hosts: db
+  become: true
+  roles:
+    - mysql
+
+- name: Deploy WordPress
+  hosts: wordpress
+  become: true
+  roles:
+    - apache

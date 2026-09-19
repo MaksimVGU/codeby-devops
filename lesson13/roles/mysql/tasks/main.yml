@@ -1,0 +1,74 @@
+- name: Install MySQL packages on Debian
+  ansible.builtin.apt:
+    name:
+      - mysql-server
+      - python3-pymysql
+    state: present
+    update_cache: true
+  when: ansible_facts.os_family == 'Debian'
+
+- name: Install MySQL packages on RedHat
+  ansible.builtin.dnf:
+    name:
+      - mysql8.4-server
+      - python3-PyMySQL
+      - firewalld
+      - python3-firewall
+    state: present
+  when: ansible_facts.os_family == 'RedHat'
+
+- name: Start MySQL
+  ansible.builtin.service:
+    name: "{{ mysql_service_name }}"
+    state: started
+    enabled: true
+
+- name: Configure MySQL
+  ansible.builtin.template:
+    src: wordpress.cnf.j2
+    dest: "{{ mysql_config_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart MySQL
+
+- name: Start firewalld on RedHat
+  ansible.builtin.service:
+    name: firewalld
+    state: started
+    enabled: true
+  when: ansible_facts.os_family == 'RedHat'
+
+- name: Allow MySQL port on RedHat
+  ansible.posix.firewalld:
+    port: 3306/tcp
+    permanent: true
+    immediate: true
+    state: enabled
+  when: ansible_facts.os_family == 'RedHat'
+
+- name: Allow MySQL port on Debian
+  ansible.builtin.ufw:
+    rule: allow
+    port: '3306'
+    proto: tcp
+  when: ansible_facts.os_family == 'Debian'
+
+- name: Flush MySQL handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Create WordPress database
+  ansible.mysql.mysql_db:
+    name: "{{ mysql_database_name }}"
+    state: present
+    login_unix_socket: "{{ mysql_socket }}"
+
+- name: Create WordPress database user
+  ansible.mysql.mysql_user:
+    name: "{{ mysql_database_user }}"
+    host: "{{ mysql_allowed_host }}"
+    password: "{{ mysql_database_password }}"
+    plugin: caching_sha2_password
+    priv: "{{ mysql_database_name }}.*:ALL"
+    state: present
+    login_unix_socket: "{{ mysql_socket }}"

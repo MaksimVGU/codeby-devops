@@ -1,0 +1,11 @@
+wordpress_download_url: https://wordpress.org/latest.tar.gz
+wordpress_install_dir: /var/www/wordpress
+wordpress_db_host: 192.168.122.4
+wordpress_db_name: wordpress
+wordpress_db_user: max
+wordpress_db_password: '1'
+wordpress_domain: 192.168.122.180
+wordpress_owner: "{{ 'www-data' if ansible_facts.os_family == 'Debian' else 'apache' }}"
+wordpress_group: "{{ 'www-data' if ansible_facts.os_family == 'Debian' else 'apache' }}"
+apache_service_name: "{{ 'apache2' if ansible_facts.os_family == 'Debian' else 'httpd' }}"
+apache_vhost_file: "{{ '/etc/apache2/sites-available/wordpress.conf' if ansible_facts.os_family == 'Debian' else '/etc/httpd/conf.d/wordpress.conf' }}"
