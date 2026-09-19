@@ -1,0 +1,268 @@
+Script started on 2026-09-19 16:39:47+03:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="236" LINES="61"]
+                                                                                                                                                                                                                                            ]0;maxim@Aurora: ~/codeby-devops/lesson12[0m[27m[24m[J[32m┌──([1m[32m[34mmaxim㉿Aurora[0m[34m[32m)-[[1m[32m[39m~/codeby-devops/lesson12[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hexit[36me[36mx[36mi[36mt[39m[36mc[36md[36m [36ma[39mnsible && ansible all -m ping && ansible all -i env/prod/inventory -m ping && ansible-playbook playbooks/site.yml && ansible-playbook -i env/prod/inventory playbooks/site.yml[178D[36mc[36md[39m[39m [39m[1ma[1mn[1ms[1mi[1mb[1ml[1me[0m [1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mi[39m[20C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m[20C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m [32m-[32mi[39m[38C[178D[36me[36mx[39mi[1mt[0m[0m [0m [0m [0m [0m [0m  [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m      [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m      [39m [39m                     [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m                     [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m  [39m [39m                                       [174D[36me[36mx[36mi[0m[36mt[39m[39m [39m [39m [39m t[4mt[24m[4mt[24m[38;5;244mree -la[39m[4mt[39m[4mr[24m[24m[36mt[24m[36mr[39m[39me[39me[39m [39m-[39ml[39ma[8D[36mt[36mr[36me[36me[39m [32m-[32ml[32ma[39m[?1l>[?2004l
+[01;34m.[0m
+├── [01;34mansible[0m
+│   ├── ansible.cfg
+│   ├── [01;34menv[0m
+│   │   ├── [01;34mdev[0m
+│   │   │   └── inventory
+│   │   └── [01;34mprod[0m
+│   │       └── inventory
+│   └── [01;34mplaybooks[0m
+│       └── site.yml
+├── les12.log
+└── Vagrantfile
+
+6 directories, 6 files
+                                                                                                                                                                                                                                            ]0;maxim@Aurora: ~/codeby-devops/lesson12
+[0m[27m[24m[J[32m┌──([1m[32m[34mmaxim㉿Aurora[0m[34m[32m)-[[1m[32m[39m~/codeby-devops/lesson12[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004htree -la[8D[36mt[36mr[36me[36me[39m [32m-[32ml[32ma[39m[8D[36me[36mx[36mi[36mt[39m [39m [39m [39m [36mc[36md[36m [36ma[39mnsible && ansible all -m ping && ansible all -i env/prod/inventory -m ping && ansible-playbook playbooks/site.yml && ansible-playbook -i env/prod/inventory playbooks/site.yml[178D[36mc[36md[39m[39m [39m[1ma[1mn[1ms[1mi[1mb[1ml[1me[0m [1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mi[39m[20C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m[20C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m [32m-[32mi[39m[38C[178D[36mv[36ma[39mg[1mr[1ma[1mn[1mt[1m [1ms[1mt[0ma[1m[34mt[1m[34mu[0m[39ms[39m [39m [39m [39m [39m [39m [39m      [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m      [39m [39m                     [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m                     [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m  [39m [39m                                       [164D[14D[36mv[36ma[36mg[0m[36mr[0m[36ma[0m[36mn[0m[36mt[39m[0m [0ms[0mta[0m[39mt[0m[39mu[1Cup    [10D[36mc[36ma[36mt[36m [36m.[36m/[36m{[39mVagrantfile,ansible/{ansible.cfg,env/{dev/inventory,prod/inventory},playbooks/site.yml}}[93D[36mt[39m[39m [39m.[39m/[1m[34m{[0m[39m[20C[1m[32m{[0m[39m[16C[1m[35m{[0m[39m[28C[1m[35m}[0m[39m[19C[1m[32m}[0m[39m[1m[34m}[0m[39m[95D[36mv[36ma[36mg[39mran[1m[34mt[0m[39m up                 [0m[39m                 [0m[39m                             [0m[39m                    [0m[39m [0m[39m [85D[8D[36mg[36mr[36ma[36mn[0m[36mt[39m[3C[10D[36mc[36ma[36mt[36m [36m.[36m/[36m{[39mVagrantfile,ansible/{ansible.cfg,env/{dev/inventory,prod/inventory},playbooks/site.yml}}[93D[36mt[39m[39m [39m.[39m/[1m[34m{[0m[39m[20C[1m[32m{[0m[39m[16C[1m[35m{[0m[39m[28C[1m[35m}[0m[39m[19C[1m[32m}[0m[39m[1m[34m}[0m[39m[?1l>[?2004l
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bookworm64"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.define "dev" do |dev|
+    dev.vm.hostname = "dev"
+    dev.vm.network "private_network",
+      ip: "192.168.56.10",
+      libvirt__network_name: "lesson12",
+      libvirt__host_ip: "192.168.56.1",
+      libvirt__dhcp_enabled: false,
+      libvirt__forward_mode: "nat",
+      libvirt__netmask: "255.255.255.0"
+  end
+
+  config.vm.define "prod" do |prod|
+    prod.vm.hostname = "prod"
+    prod.vm.network "private_network",
+      ip: "192.168.56.11",
+      libvirt__network_name: "lesson12",
+      libvirt__host_ip: "192.168.56.1",
+      libvirt__dhcp_enabled: false,
+      libvirt__forward_mode: "nat",
+      libvirt__netmask: "255.255.255.0"
+  end
+end
+[defaults]
+inventory = env/dev/inventory
+host_key_checking = False
+remote_user = vagrant
+[dev]
+dev ansible_host=192.168.56.10 ansible_user=vagrant ansible_ssh_private_key_file=../.vagrant/machines/dev/libvirt/private_key
+[prod]
+prod ansible_host=192.168.56.11 ansible_user=vagrant ansible_ssh_private_key_file=../.vagrant/machines/prod/libvirt/private_key
+---
+- name: Configure hosts
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install packages
+      ansible.builtin.apt:
+        name:
+          - wget
+          - htop
+          - nginx
+        state: present
+        update_cache: true
+
+    - name: Start nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Show environment
+      ansible.builtin.debug:
+        msg: "This host is in {{ group_names[0] }} environment"
+                                                                                                                                                                                                                                            ]0;maxim@Aurora: ~/codeby-devops/lesson12
+[0m[27m[24m[J[32m┌──([1m[32m[34mmaxim㉿Aurora[0m[34m[32m)-[[1m[32m[39m~/codeby-devops/lesson12[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hcat ./{Vagrantfile,ansible/{ansible.cfg,env/{dev/inventory,prod/inventory},playbooks/site.yml}}[95D[36mc[36ma[36mt[39m[3C[1m[34m{[0m[39m[20C[1m[32m{[0m[39m[16C[1m[35m{[0m[39m[28C[1m[35m}[0m[39m[19C[1m[32m}[0m[39m[1m[34m}[0m[39m[95D[36mt[36mr[36me[39me -[1m[34ml[0m[39ma                   [0m[39m                 [0m[39m                             [0m[39m                    [0m[39m [0m[39m [87D[36me[36me[39m [32m-[0m[32ml[32ma[39m[8D[36me[36mx[36mi[36mt[39m [39m [39m [39m [36mc[36md[36m [36ma[39mnsible && ansible all -m ping && ansible all -i env/prod/inventory -m ping && ansible-playbook playbooks/site.yml && ansible-playbook -i env/prod/inventory playbooks/site.yml[178D[36mc[36md[39m[39m [39m[1ma[1mn[1ms[1mi[1mb[1ml[1me[0m [1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mi[39m[20C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m[20C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m [32m-[32mi[39m[38C[178D[36mv[36ma[39mg[1mr[1ma[1mn[1mt[1m [1ms[1mt[0ma[1m[34mt[1m[34mu[0m[39ms[39m [39m [39m [39m [39m [39m [39m      [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m      [39m [39m                     [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m                     [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m  [39m [39m                                       [164D[14D[36mv[36ma[36mg[0m[36mr[0m[36ma[0m[36mn[0m[36mt[39m[0m [0ms[0mta[0m[39mt[0m[39mu[1Cup    [?1l>[?2004l
+[0mBringing machine 'dev' up with 'libvirt' provider...[0m
+[0mBringing machine 'prod' up with 'libvirt' provider...[0m
+[1m==> dev: Checking if box 'debian/bookworm64' version '12.20260519.1' is up to date...[0m
+[33m[fog][WARNING] Unrecognized arguments: libvirt_ip_command[0m
+[1m==> dev: Creating image (snapshot of base box volume).[0m
+[1m==> dev: Creating domain with the following settings...[0m
+[1m==> dev:  -- Name:              lesson12_dev[0m
+[1m==> dev:  -- Description:       Source: /home/maxim/codeby-devops/lesson12/Vagrantfile[0m
+[1m==> dev:  -- Domain type:       kvm[0m
+[1m==> dev:  -- Cpus:              1[0m
+[1m==> dev:  -- Feature:           acpi[0m
+[1m==> dev:  -- Feature:           apic[0m
+[1m==> dev:  -- Feature:           pae[0m
+[1m==> dev:  -- Clock offset:      utc[0m
+[1m==> dev:  -- Memory:            512M[0m
+[1m==> dev:  -- Base box:          debian/bookworm64[0m
+[1m==> dev:  -- Storage pool:      default[0m
+[1m==> dev:  -- Image(vda):        /var/lib/libvirt/images/lesson12_dev.img, virtio, 100G[0m
+[1m==> dev:  -- Disk driver opts:  cache='default'[0m
+[1m==> dev:  -- Graphics Type:     vnc[0m
+[1m==> dev:  -- Video Type:        cirrus[0m
+[1m==> dev:  -- Video VRAM:        16384[0m
+[1m==> dev:  -- Video 3D accel:    false[0m
+[1m==> dev:  -- Keymap:            en-us[0m
+[1m==> dev:  -- TPM Backend:       passthrough[0m
+[1m==> dev:  -- INPUT:             type=mouse, bus=ps2[0m
+[1m==> prod: Checking if box 'debian/bookworm64' version '12.20260519.1' is up to date...[0m
+[33m[fog][WARNING] Unrecognized arguments: libvirt_ip_command[0m
+[1m==> prod: Creating image (snapshot of base box volume).[0m
+[1m==> prod: Creating domain with the following settings...[0m
+[1m==> prod:  -- Name:              lesson12_prod[0m
+[1m==> prod:  -- Description:       Source: /home/maxim/codeby-devops/lesson12/Vagrantfile[0m
+[1m==> prod:  -- Domain type:       kvm[0m
+[1m==> prod:  -- Cpus:              1[0m
+[1m==> prod:  -- Feature:           acpi[0m
+[1m==> prod:  -- Feature:           apic[0m
+[1m==> prod:  -- Feature:           pae[0m
+[1m==> prod:  -- Clock offset:      utc[0m
+[1m==> prod:  -- Memory:            512M[0m
+[1m==> prod:  -- Base box:          debian/bookworm64[0m
+[1m==> prod:  -- Storage pool:      default[0m
+[1m==> prod:  -- Image(vda):        /var/lib/libvirt/images/lesson12_prod.img, virtio, 100G[0m
+[1m==> prod:  -- Disk driver opts:  cache='default'[0m
+[1m==> prod:  -- Graphics Type:     vnc[0m
+[1m==> prod:  -- Video Type:        cirrus[0m
+[1m==> prod:  -- Video VRAM:        16384[0m
+[1m==> prod:  -- Video 3D accel:    false[0m
+[1m==> prod:  -- Keymap:            en-us[0m
+[1m==> prod:  -- TPM Backend:       passthrough[0m
+[1m==> prod:  -- INPUT:             type=mouse, bus=ps2[0m
+[1m==> dev: Creating shared folders metadata...[0m
+[1m==> dev: Starting domain.[0m
+[1m==> dev: Domain launching with graphics connection settings...[0m
+[1m==> dev:  -- Graphics Port:      5900[0m
+[1m==> dev:  -- Graphics IP:        127.0.0.1[0m
+[1m==> dev:  -- Graphics Password:  Not defined[0m
+[1m==> dev:  -- Graphics Websocket: 5700[0m
+[1m==> dev: Waiting for domain to get an IP address...[0m
+[1m==> prod: Creating shared folders metadata...[0m
+[1m==> prod: Starting domain.[0m
+[1m==> prod: Domain launching with graphics connection settings...[0m
+[1m==> prod:  -- Graphics Port:      5901[0m
+[1m==> prod:  -- Graphics IP:        127.0.0.1[0m
+[1m==> prod:  -- Graphics Password:  Not defined[0m
+[1m==> prod:  -- Graphics Websocket: 5701[0m
+[1m==> prod: Waiting for domain to get an IP address...[0m
+[1m==> dev: Waiting for machine to boot. This may take a few minutes...[0m
+[0m    dev: SSH address: 192.168.121.21:22[0m
+[0m    dev: SSH username: vagrant[0m
+[0m    dev: SSH auth method: private key[0m
+[0m    dev: 
+    dev: Vagrant insecure key detected. Vagrant will automatically replace
+    dev: this with a newly generated keypair for better security.[0m
+[1m==> prod: Waiting for machine to boot. This may take a few minutes...[0m
+[0m    prod: SSH address: 192.168.121.69:22[0m
+[0m    prod: SSH username: vagrant[0m
+[0m    prod: SSH auth method: private key[0m
+[0m    prod: 
+    prod: Vagrant insecure key detected. Vagrant will automatically replace
+    prod: this with a newly generated keypair for better security.[0m
+[0m    dev: 
+    dev: Inserting generated public key within guest...[0m
+[0m    dev: Removing insecure key from the guest if it's present...[0m
+[0m    dev: Key inserted! Disconnecting and reconnecting using new SSH key...[0m
+[1m==> dev: Machine booted and ready![0m
+[1m==> dev: Setting hostname...[0m
+[0m    prod: 
+    prod: Inserting generated public key within guest...[0m
+[0m    prod: Removing insecure key from the guest if it's present...[0m
+[0m    prod: Key inserted! Disconnecting and reconnecting using new SSH key...[0m
+[1m==> prod: Machine booted and ready![0m
+[1m==> prod: Setting hostname...[0m
+[1m==> dev: Configuring and enabling network interfaces...[0m
+[1m==> prod: Configuring and enabling network interfaces...[0m
+[0m[0m
+[1;32m==> dev: Machine 'dev' has a post `vagrant up` message. This is a message
+==> dev: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> dev: 
+==> dev: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports[0m
+[0m[0m
+[1;32m==> prod: Machine 'prod' has a post `vagrant up` message. This is a message
+==> prod: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> prod: 
+==> prod: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports[0m
+                                                                                                                                                                                                                                            ]0;maxim@Aurora: ~/codeby-devops/lesson12
+[0m[27m[24m[J[32m┌──([1m[32m[34mmaxim㉿Aurora[0m[34m[32m)-[[1m[32m[39m~/codeby-devops/lesson12[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hvagrant up[10D[36mv[36ma[36mg[36mr[36ma[36mn[36mt[39m[3C[10D[36mc[36ma[36mt[36m [36m.[36m/[36m{[39mVagrantfile,ansible/{ansible.cfg,env/{dev/inventory,prod/inventory},playbooks/site.yml}}[93D[36mt[39m[39m [39m.[39m/[1m[34m{[0m[39m[20C[1m[32m{[0m[39m[16C[1m[35m{[0m[39m[28C[1m[35m}[0m[39m[19C[1m[32m}[0m[39m[1m[34m}[0m[39m[95D[36mt[36mr[36me[39me -[1m[34ml[0m[39ma                   [0m[39m                 [0m[39m                             [0m[39m                    [0m[39m [0m[39m [87D[36me[36me[39m [32m-[0m[32ml[32ma[39m[8D[36me[36mx[36mi[36mt[39m [39m [39m [39m [36mc[36md[36m [36ma[39mnsible && ansible all -m ping && ansible all -i env/prod/inventory -m ping && ansible-playbook playbooks/site.yml && ansible-playbook -i env/prod/inventory playbooks/site.yml[178D[36mc[36md[39m[39m [39m[1ma[1mn[1ms[1mi[1mb[1ml[1me[0m [1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mi[39m[20C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m[20C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m [32m-[32mi[39m[38C[178D[36mv[36ma[39mg[1mr[1ma[1mn[1mt[1m [1ms[1mt[0ma[1m[34mt[1m[34mu[0m[39ms[39m [39m [39m [39m [39m [39m [39m      [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m      [39m [39m                     [39m [39m       [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m                     [0m[39m [0m[39m  [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m  [39m [39m                                       [164D[14D[36mv[36ma[36mg[0m[36mr[0m[36ma[0m[36mn[0m[36mt[39m[0m [0ms[0mta[0m[39mt[0m[39mu[1C[?1l>[?2004l
+[33m[fog][WARNING] Unrecognized arguments: libvirt_ip_command[0m
+[33m[fog][WARNING] Unrecognized arguments: libvirt_ip_command[0m
+[0mCurrent machine states:
+
+dev                       running (libvirt)
+prod                      running (libvirt)
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.[0m
+                                                                                                                                                                                                                                            ]0;maxim@Aurora: ~/codeby-devops/lesson12
+[0m[27m[24m[J[32m┌──([1m[32m[34mmaxim㉿Aurora[0m[34m[32m)-[[1m[32m[39m~/codeby-devops/lesson12[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004hvagrant status[14D[36mv[36ma[36mg[36mr[36ma[36mn[36mt[39m[7Cup    [10D[36mc[36ma[36mt[36m [36m.[36m/[36m{[39mVagrantfile,ansible/{ansible.cfg,env/{dev/inventory,prod/inventory},playbooks/site.yml}}[93D[36mt[39m[39m [39m.[39m/[1m[34m{[0m[39m[20C[1m[32m{[0m[39m[16C[1m[35m{[0m[39m[28C[1m[35m}[0m[39m[19C[1m[32m}[0m[39m[1m[34m}[0m[39m[95D[36mt[36mr[36me[39me -[1m[34ml[0m[39ma                   [0m[39m                 [0m[39m                             [0m[39m                    [0m[39m [0m[39m [87D[36me[36me[39m [32m-[0m[32ml[32ma[39m[8D[36me[36mx[36mi[36mt[39m [39m [39m [39m [36mc[36md[36m [36ma[39mnsible && ansible all -m ping && ansible all -i env/prod/inventory -m ping && ansible-playbook playbooks/site.yml && ansible-playbook -i env/prod/inventory playbooks/site.yml[178D[36mc[36md[39m[39m [39m[1ma[1mn[1ms[1mi[1mb[1ml[1me[0m [1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[39m[5C[32m-[32mi[39m[20C[32m-[32mm[39m[6C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m[20C[1m[34m&[1m[34m&[0m[39m [36ma[36mn[36ms[36mi[36mb[36ml[36me[36m-[36mp[36ml[36ma[36my[36mb[36mo[36mo[36mk[39m [32m-[32mi[39m[38C[?1l>[?2004l
+[1;35m[WARNING]: Found both group and host with same name: dev[0m
+[1;35m[WARNING]: Host 'dev' is using the discovered Python interpreter at '/usr/bin/python3.11', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.21/reference_appendices/interpreter_discovery.html for more information.[0m
+[0;32mdev | SUCCESS => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "discovered_interpreter_python": "/usr/bin/python3.11"[0m
+[0;32m    },[0m
+[0;32m    "changed": false,[0m
+[0;32m    "ping": "pong"[0m
+[0;32m}[0m
+[1;35m[WARNING]: Found both group and host with same name: prod[0m
+[1;35m[WARNING]: Host 'prod' is using the discovered Python interpreter at '/usr/bin/python3.11', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.21/reference_appendices/interpreter_discovery.html for more information.[0m
+[0;32mprod | SUCCESS => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "discovered_interpreter_python": "/usr/bin/python3.11"[0m
+[0;32m    },[0m
+[0;32m    "changed": false,[0m
+[0;32m    "ping": "pong"[0m
+[0;32m}[0m
+[1;35m[WARNING]: Found both group and host with same name: dev[0m
+
+PLAY [Configure hosts] *********************************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************************************************************************************************************************
+[1;35m[WARNING]: Host 'dev' is using the discovered Python interpreter at '/usr/bin/python3.11', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.21/reference_appendices/interpreter_discovery.html for more information.[0m
+[0;32mok: [dev][0m
+
+TASK [Install packages] ********************************************************************************************************************************************************************************************************************
+[0;33mchanged: [dev][0m
+
+TASK [Start nginx] *************************************************************************************************************************************************************************************************************************
+[0;32mok: [dev][0m
+
+TASK [Show environment] ********************************************************************************************************************************************************************************************************************
+[0;32mok: [dev] => {[0m
+[0;32m    "msg": "This host is in dev environment"[0m
+[0;32m}[0m
+
+PLAY RECAP *********************************************************************************************************************************************************************************************************************************
+[0;33mdev[0m                        : [0;32mok=4   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[1;35m[WARNING]: Found both group and host with same name: prod[0m
+
+PLAY [Configure hosts] *********************************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************************************************************************************************************************
+[1;35m[WARNING]: Host 'prod' is using the discovered Python interpreter at '/usr/bin/python3.11', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.21/reference_appendices/interpreter_discovery.html for more information.[0m
+[0;32mok: [prod][0m
+
+TASK [Install packages] ********************************************************************************************************************************************************************************************************************
+[0;33mchanged: [prod][0m
+
+TASK [Start nginx] *************************************************************************************************************************************************************************************************************************
+[0;32mok: [prod][0m
+
+TASK [Show environment] ********************************************************************************************************************************************************************************************************************
+[0;32mok: [prod] => {[0m
+[0;32m    "msg": "This host is in prod environment"[0m
+[0;32m}[0m
+
+PLAY RECAP *********************************************************************************************************************************************************************************************************************************
+[0;33mprod[0m                       : [0;32mok=4   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+                                                                                                                                                                                                                                            ]0;maxim@Aurora: ~/codeby-devops/lesson12/ansible
+[0m[27m[24m[J[32m┌──([1m[32m[34mmaxim㉿Aurora[0m[34m[32m)-[[1m[32m[39m~/codeby-devops/lesson12/ansible[0m[32m]
+└─[1m[32m[34m$[0m[34m[39m [K[?1h=[?2004he[1me[0m[1me[0m[38;5;244mxit[39m[1me[39m[1mx[0m[0m[36me[0m[36mx[39m[39mi[39mt[36me[36mx[36mi[36mt[39m[?1l>[?2004l
+
+Script done on 2026-09-19 16:42:15+03:00 [COMMAND_EXIT_CODE="0"]
