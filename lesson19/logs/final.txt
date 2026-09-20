@@ -1,0 +1,9 @@
+$ kubectl get namespace codeby
+NAME     STATUS   AGE
+codeby   Active   4m37s
+
+$ kubectl get pods -n codeby -o wide
+NAME                       READY   STATUS    RESTARTS   AGE     IP           NODE                 NOMINATED NODE   READINESS GATES
+nginx-declarative-config   1/1     Running   0          9s      10.244.0.7   kind-control-plane   <none>           <none>
+nginx-imperative           1/1     Running   0          4m30s   10.244.0.5   kind-control-plane   <none>           <none>
+nginx-imperative-config    1/1     Running   0          20s     10.244.0.6   kind-control-plane   <none>           <none>
