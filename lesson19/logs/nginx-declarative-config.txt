@@ -1,0 +1,5 @@
+$ kubectl apply -f lesson19/manifests/nginx-declarative-config.yaml
+pod/nginx-declarative-config created
+pod/nginx-declarative-config condition met
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                 NOMINATED NODE   READINESS GATES
+nginx-declarative-config   1/1     Running   0          1s    10.244.0.7   kind-control-plane   <none>           <none>

@@ -1,0 +1,5 @@
+$ kubectl create -f lesson19/manifests/nginx-imperative-config.yaml
+pod/nginx-imperative-config created
+pod/nginx-imperative-config condition met
+NAME                      READY   STATUS    RESTARTS   AGE   IP           NODE                 NOMINATED NODE   READINESS GATES
+nginx-imperative-config   1/1     Running   0          0s    10.244.0.6   kind-control-plane   <none>           <none>
