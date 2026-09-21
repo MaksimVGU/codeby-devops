@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wordpress-diagnostic
+  namespace: dev
+spec:
+  serviceAccountName: wordpress-diagnostic
+  restartPolicy: Never
+  containers:
+    - name: diagnostic
+      image: nicolaka/netshoot:v0.16
+      command:
+        - /bin/sh
+        - -c
+        - |
+          TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+          CA=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          API=https://kubernetes.default.svc/api/v1/namespaces/dev/pods
+          echo "WordPress pods:"
+          curl -fsS --cacert "$CA" -H "Authorization: Bearer $TOKEN" "$API?labelSelector=app%3Dwordpress" | jq -r '.items[].metadata.name'
+          sleep 3600
