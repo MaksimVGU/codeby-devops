@@ -1,0 +1,53 @@
+{{- if and .Values.mysql.persistence.enabled .Values.mysql.persistence.createPV }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "wordpress.fullname" . }}-mysql-pv
+  labels:
+    {{- include "wordpress.mysqlSelectorLabels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.mysql.persistence.size }}
+  volumeMode: Filesystem
+  accessModes:
+    {{- toYaml .Values.mysql.persistence.accessModes | nindent 4 }}
+  persistentVolumeReclaimPolicy: {{ .Values.mysql.persistence.reclaimPolicy }}
+  storageClassName: {{ include "wordpress.storageClassName" . }}
+  local:
+    path: {{ .Values.mysql.persistence.hostPath }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - {{ index .Values.mysql.nodeSelector "kubernetes.io/hostname" }}
+---
+{{- end }}
+{{- if and .Values.wordpress.persistence.enabled .Values.wordpress.persistence.createPV }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "wordpress.fullname" . }}-wordpress-pv
+  labels:
+    {{- include "wordpress.wordpressSelectorLabels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.wordpress.persistence.size }}
+  volumeMode: Filesystem
+  accessModes:
+    {{- toYaml .Values.wordpress.persistence.accessModes | nindent 4 }}
+  persistentVolumeReclaimPolicy: {{ .Values.wordpress.persistence.reclaimPolicy }}
+  storageClassName: {{ include "wordpress.storageClassName" . }}
+  local:
+    path: {{ .Values.wordpress.persistence.hostPath }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - {{ index .Values.wordpress.nodeSelector "kubernetes.io/hostname" }}
+{{- end }}
