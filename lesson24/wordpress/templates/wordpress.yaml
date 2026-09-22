@@ -1,0 +1,83 @@
+{{- if .Values.wordpress.persistence.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "wordpress.fullname" . }}-wordpress-pvc
+  labels:
+    {{- include "wordpress.wordpressLabels" . | nindent 4 }}
+spec:
+  accessModes:
+    {{- toYaml .Values.wordpress.persistence.accessModes | nindent 4 }}
+  resources:
+    requests:
+      storage: {{ .Values.wordpress.persistence.size }}
+  storageClassName: {{ include "wordpress.storageClassName" . }}
+  selector:
+    matchLabels:
+      {{- include "wordpress.wordpressSelectorLabels" . | nindent 6 }}
+---
+{{- end }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wordpress.fullname" . }}-wordpress
+  labels:
+    {{- include "wordpress.wordpressLabels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.wordpress.replicas }}
+  selector:
+    matchLabels:
+      {{- include "wordpress.wordpressSelectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "wordpress.wordpressSelectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.wordpress.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.wordpress.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.wordpress.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: wordpress
+          image: "{{ .Values.images.wordpress.repository }}:{{ .Values.images.wordpress.tag }}"
+          imagePullPolicy: {{ .Values.images.wordpress.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.wordpress.service.port }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "wordpress.wordpressConfigName" . }}
+            - secretRef:
+                name: {{ include "wordpress.wordpressSecretName" . }}
+          resources:
+            {{- toYaml .Values.wordpress.resources | nindent 12 }}
+          volumeMounts:
+            - name: wordpress-data
+              mountPath: /var/www/html
+      volumes:
+        - name: wordpress-data
+          persistentVolumeClaim:
+            claimName: {{ include "wordpress.fullname" . }}-wordpress-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "wordpress.wordpressServiceName" . }}
+  labels:
+    {{- include "wordpress.wordpressLabels" . | nindent 4 }}
+spec:
+  type: {{ .Values.wordpress.service.type }}
+  ports:
+    - name: http
+      port: {{ .Values.wordpress.service.port }}
+      targetPort: http
+  selector:
+    {{- include "wordpress.wordpressSelectorLabels" . | nindent 4 }}
