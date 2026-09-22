@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        label 'maven'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                dir('lesson25') {
+                    sh 'java -version'
+                    sh 'mvn -version'
+                    sh 'mvn -B clean package'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'lesson25/target/*.jar', fingerprint: true
+        }
+    }
+}
