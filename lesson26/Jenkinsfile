@@ -1,0 +1,134 @@
+pipeline {
+    agent none
+
+    stages {
+        stage('Detect Changes') {
+            agent {
+                label 'maven'
+            }
+            steps {
+                script {
+                    def changed = sh(
+                        script: "git diff-tree --root --no-commit-id --name-only -r ${env.GIT_COMMIT}",
+                        returnStdout: true
+                    ).trim()
+
+                    def files = changed ? changed.split('\n') : []
+
+                    env.RUN_HELLO_WORLD = files.any { it.startsWith('lesson26/hello-world/') }.toString()
+                    env.RUN_HELLO_JENKINS = files.any { it.startsWith('lesson26/hello-jenkins/') }.toString()
+                    env.RUN_HELLO_DEVOPS = files.any { it.startsWith('lesson26/hello-devops/') }.toString()
+                }
+            }
+        }
+
+        stage('Applications') {
+            parallel {
+                stage('Hello World') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_WORLD == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                dir('lesson26/hello-world') {
+                                    sh 'mvn -B -DskipTests package'
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson26/hello-world') {
+                                    sh 'mvn -B test'
+                                }
+                            }
+                        }
+                        stage('Deploy') {
+                            steps {
+                                dir('lesson26/hello-world') {
+                                    sh 'java -cp target/hello-world-1.0.0.jar ru.lesson26.helloworld.App'
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Jenkins') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_JENKINS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                dir('lesson26/hello-jenkins') {
+                                    sh 'mvn -B -DskipTests package'
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson26/hello-jenkins') {
+                                    sh 'mvn -B test'
+                                }
+                            }
+                        }
+                        stage('Deploy') {
+                            steps {
+                                dir('lesson26/hello-jenkins') {
+                                    sh 'java -cp target/hello-jenkins-1.0.0.jar ru.lesson26.hellojenkins.App'
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Devops') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_DEVOPS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                dir('lesson26/hello-devops') {
+                                    sh 'mvn -B -DskipTests package'
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson26/hello-devops') {
+                                    sh 'mvn -B test'
+                                }
+                            }
+                        }
+                        stage('Deploy') {
+                            steps {
+                                dir('lesson26/hello-devops') {
+                                    sh 'java -cp target/hello-devops-1.0.0.jar ru.lesson26.hellodevops.App'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
