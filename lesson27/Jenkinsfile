@@ -1,0 +1,296 @@
+pipeline {
+    agent none
+
+    stages {
+        stage('Detect Changes') {
+            agent {
+                label 'maven'
+            }
+            steps {
+                script {
+                    def changed = sh(
+                        script: "git diff-tree --root --no-commit-id --name-only -r ${env.GIT_COMMIT}",
+                        returnStdout: true
+                    ).trim()
+
+                    def files = changed ? changed.split('\n') : []
+
+                    env.RUN_HELLO_WORLD = files.any { it.startsWith('lesson27/hello-world/') }.toString()
+                    env.RUN_HELLO_JENKINS = files.any { it.startsWith('lesson27/hello-jenkins/') }.toString()
+                    env.RUN_HELLO_DEVOPS = files.any { it.startsWith('lesson27/hello-devops/') }.toString()
+                }
+            }
+        }
+
+        stage('Build and Test') {
+            parallel {
+                stage('Hello World') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_WORLD == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                dir('lesson27/hello-world') {
+                                    sh 'mvn -B -DskipTests package'
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson27/hello-world') {
+                                    sh 'mvn -B verify'
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Jenkins') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_JENKINS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                dir('lesson27/hello-jenkins') {
+                                    sh 'mvn -B -DskipTests package'
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson27/hello-jenkins') {
+                                    sh 'mvn -B verify'
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Devops') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_DEVOPS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                dir('lesson27/hello-devops') {
+                                    sh 'mvn -B -DskipTests package'
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson27/hello-devops') {
+                                    sh 'mvn -B verify'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('SonarQube') {
+            stages {
+                stage('Hello World Analysis') {
+                    when {
+                        expression {
+                            env.RUN_HELLO_WORLD == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    steps {
+                        dir('lesson27/hello-world') {
+                            withSonarQubeEnv('SonarQube') {
+                                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar -Dsonar.projectKey=hello-world -Dsonar.projectName="Hello World!"'
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello World Quality Gate') {
+                    when {
+                        expression {
+                            env.RUN_HELLO_WORLD == 'true'
+                        }
+                    }
+                    agent none
+                    steps {
+                        timeout(time: 5, unit: 'MINUTES') {
+                            script {
+                                def qg = waitForQualityGate abortPipeline: false
+                                if (qg.status != 'OK') {
+                                    currentBuild.result = 'FAILURE'
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Jenkins Analysis') {
+                    when {
+                        expression {
+                            env.RUN_HELLO_JENKINS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    steps {
+                        dir('lesson27/hello-jenkins') {
+                            withSonarQubeEnv('SonarQube') {
+                                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar -Dsonar.projectKey=hello-jenkins -Dsonar.projectName="Hello Jenkins!"'
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Jenkins Quality Gate') {
+                    when {
+                        expression {
+                            env.RUN_HELLO_JENKINS == 'true'
+                        }
+                    }
+                    agent none
+                    steps {
+                        timeout(time: 5, unit: 'MINUTES') {
+                            script {
+                                def qg = waitForQualityGate abortPipeline: false
+                                if (qg.status != 'OK') {
+                                    currentBuild.result = 'FAILURE'
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Devops Analysis') {
+                    when {
+                        expression {
+                            env.RUN_HELLO_DEVOPS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    steps {
+                        dir('lesson27/hello-devops') {
+                            withSonarQubeEnv('SonarQube') {
+                                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar -Dsonar.projectKey=hello-devops -Dsonar.projectName="Hello Devops!"'
+                            }
+                        }
+                    }
+                }
+
+                stage('Hello Devops Quality Gate') {
+                    when {
+                        expression {
+                            env.RUN_HELLO_DEVOPS == 'true'
+                        }
+                    }
+                    agent none
+                    steps {
+                        timeout(time: 5, unit: 'MINUTES') {
+                            script {
+                                def qg = waitForQualityGate abortPipeline: false
+                                if (qg.status != 'OK') {
+                                    currentBuild.result = 'FAILURE'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Quality Gate Result') {
+            steps {
+                script {
+                    if (currentBuild.currentResult == 'FAILURE') {
+                        error 'Quality Gate failed'
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            parallel {
+                stage('Hello World') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_WORLD == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    steps {
+                        dir('lesson27/hello-world') {
+                            sh 'mvn -B -DskipTests package'
+                            sh 'java -cp target/hello-world-1.0.0.jar ru.lesson26.helloworld.App'
+                        }
+                    }
+                }
+
+                stage('Hello Jenkins') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_JENKINS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    steps {
+                        dir('lesson27/hello-jenkins') {
+                            sh 'mvn -B -DskipTests package'
+                            sh 'java -cp target/hello-jenkins-1.0.0.jar ru.lesson26.hellojenkins.App'
+                        }
+                    }
+                }
+
+                stage('Hello Devops') {
+                    when {
+                        beforeAgent true
+                        expression {
+                            env.RUN_HELLO_DEVOPS == 'true'
+                        }
+                    }
+                    agent {
+                        label 'maven'
+                    }
+                    steps {
+                        dir('lesson27/hello-devops') {
+                            sh 'mvn -B -DskipTests package'
+                            sh 'java -cp target/hello-devops-1.0.0.jar ru.lesson26.hellodevops.App'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
