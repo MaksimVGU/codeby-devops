@@ -1,0 +1,98 @@
+name: lesson28-ci
+
+on:
+  push:
+    branches:
+      - lesson28
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-test-artifact:
+    name: ${{ matrix.app }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: hello-world
+            jar: hello-world-1.0.0.jar
+          - app: hello-jenkins
+            jar: hello-jenkins-1.0.0.jar
+          - app: hello-devops
+            jar: hello-devops-1.0.0.jar
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: lesson28/${{ matrix.app }}/pom.xml
+
+      - name: Build
+        working-directory: lesson28/${{ matrix.app }}
+        run: mvn -B -DskipTests package
+
+      - name: Test
+        working-directory: lesson28/${{ matrix.app }}
+        run: mvn -B test
+
+      - name: Save artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.app }}-jar
+          path: lesson28/${{ matrix.app }}/target/${{ matrix.jar }}
+          if-no-files-found: error
+
+  docker-publish:
+    name: docker-${{ matrix.app }}
+    needs: build-test-artifact
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: hello-world
+          - app: hello-jenkins
+          - app: hello-devops
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ matrix.app }}-jar
+          path: lesson28/${{ matrix.app }}/target
+
+      - name: Set image owner
+        run: echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
+
+      - name: Login to GHCR
+        if: github.event_name == 'push'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v7
+        with:
+          context: lesson28/${{ matrix.app }}
+          file: lesson28/${{ matrix.app }}/Dockerfile
+          push: ${{ github.event_name == 'push' }}
+          tags: |
+            ghcr.io/${{ env.OWNER_LC }}/${{ matrix.app }}:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/${{ matrix.app }}:latest
