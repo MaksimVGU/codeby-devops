@@ -1,0 +1,113 @@
+name: lesson29
+
+services:
+  post_db:
+    image: mongo:4.4
+    restart: unless-stopped
+    volumes:
+      - post_db_data:/data/db
+    networks:
+      - reddit
+
+  post:
+    image: chromko/post:latest
+    restart: unless-stopped
+    environment:
+      POST_DATABASE_HOST: post_db
+      POST_DATABASE: posts
+    depends_on:
+      - post_db
+    networks:
+      - reddit
+
+  comment:
+    image: chromko/comment:latest
+    restart: unless-stopped
+    environment:
+      COMMENT_DATABASE_HOST: post_db
+      COMMENT_DATABASE: comments
+    depends_on:
+      - post_db
+    networks:
+      - reddit
+
+  ui:
+    image: chromko/ui:latest
+    restart: unless-stopped
+    ports:
+      - "9292:9292"
+    environment:
+      POST_SERVICE_HOST: post
+      POST_SERVICE_PORT: "5000"
+      COMMENT_SERVICE_HOST: comment
+      COMMENT_SERVICE_PORT: "9292"
+    depends_on:
+      - post
+      - comment
+    networks:
+      - reddit
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    depends_on:
+      - blackbox
+      - cadvisor
+    networks:
+      - reddit
+
+  blackbox:
+    image: prom/blackbox-exporter:v0.25.0
+    restart: unless-stopped
+    ports:
+      - "9115:9115"
+    volumes:
+      - ./blackbox/blackbox.yml:/etc/blackbox_exporter/config.yml:ro
+    networks:
+      - reddit
+
+  cadvisor:
+    image: ghcr.io/google/cadvisor:0.55.1
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    networks:
+      - reddit
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      - reddit
+
+networks:
+  reddit:
+    driver: bridge
+
+volumes:
+  post_db_data:
+  prometheus_data:
+  grafana_data:
