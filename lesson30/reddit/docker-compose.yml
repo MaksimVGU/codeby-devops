@@ -1,0 +1,49 @@
+services:
+  post_db:
+    image: mongo:4.4
+    volumes:
+      - post_db:/data/db
+
+  post:
+    image: chromko/post:latest
+    environment:
+      - POST_DATABASE_HOST=post_db
+      - POST_DATABASE=posts
+    depends_on:
+      - post_db
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: "127.0.0.1:24224"
+        fluentd-async: "true"
+        tag: service.post
+
+  comment:
+    image: chromko/comment:latest
+    environment:
+      - COMMENT_DATABASE_HOST=post_db
+      - COMMENT_DATABASE=comments
+    depends_on:
+      - post_db
+
+  ui:
+    image: chromko/ui:latest
+    environment:
+      - POST_SERVICE_HOST=post
+      - POST_SERVICE_PORT=5000
+      - COMMENT_SERVICE_HOST=comment
+      - COMMENT_SERVICE_PORT=9292
+    ports:
+      - "9292:9292"
+    depends_on:
+      - post
+      - comment
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: "127.0.0.1:24224"
+        fluentd-async: "true"
+        tag: service.ui
+
+volumes:
+  post_db:
