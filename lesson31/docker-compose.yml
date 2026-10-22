@@ -1,0 +1,53 @@
+services:
+  ui:
+    image: chromko/ui:latest
+    container_name: ui
+    ports:
+      - "9292:9292"
+    environment:
+      POST_SERVICE_HOST: post
+      POST_SERVICE_PORT: "5000"
+      COMMENT_SERVICE_HOST: comment
+      COMMENT_SERVICE_PORT: "9292"
+    depends_on:
+      - post
+      - comment
+      - zipkin
+
+  post:
+    image: lesson31-post:bug
+    build:
+      context: "https://github.com/Artemmkin/bugged-code.git#e16d0e6bfec61a04fc38734af8e0466ed6e64e76:post-py"
+    container_name: post
+    environment:
+      POST_DATABASE_HOST: post_db
+      POST_DATABASE: posts
+      ZIPKIN_HOST: zipkin
+      ZIPKIN_PORT: "9411"
+    depends_on:
+      - post_db
+      - zipkin
+
+  comment:
+    image: chromko/comment:latest
+    container_name: comment
+    environment:
+      COMMENT_DATABASE_HOST: post_db
+      COMMENT_DATABASE: comments
+    depends_on:
+      - post_db
+
+  post_db:
+    image: mongo:4.4
+    container_name: post_db
+    volumes:
+      - lesson31_post_db:/data/db
+
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+
+volumes:
+  lesson31_post_db:
