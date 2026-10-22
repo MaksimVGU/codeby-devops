@@ -16,6 +16,8 @@ services:
 
   post:
     image: lesson31-post:bug
+    build:
+      context: "https://github.com/Artemmkin/bugged-code.git#e16d0e6bfec61a04fc38734af8e0466ed6e64e76:post-py"
     container_name: post
     environment:
       POST_DATABASE_HOST: post_db
